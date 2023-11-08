@@ -1,12 +1,18 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
+  <ion-item color="dark">
+    <ion-searchbar color="light" mod="ios" placeholder="Buscar destino" 
+    (ionchange)="buscarEnderecos($event)"></ion-searchbar>
+  </ion-item>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-list [hidden]="!listaEnderecos.length">
+    <ion-item line="full" *ngFor="let local of listaEnderecos" (click)="tracarRota(local)">
+      <ion-label>
+        {{local.description}}
+      </ion-label>
+    </ion-item>
+    </ion-list>
 
   <div id="map" #map></div>
   
